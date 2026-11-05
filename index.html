@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2b1810">
+  <title>BREAK YA · Cafetería virtual SENATI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="topbar">
+    <a href="#" class="logo" data-go="home" aria-label="BREAK YA inicio">
+      <span class="logo-mark">☕</span>
+      <span class="logo-text">BREAK <b>YA</b></span>
+    </a>
+    <div class="top-actions">
+      <button class="icon-btn" id="btnUser" aria-label="Mi cuenta">👤</button>
+      <button class="icon-btn cart-btn" id="btnCart" aria-label="Abrir carrito">
+        🛒 <span class="badge" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="app">
+
+    <!-- INICIO -->
+    <section class="view active" id="view-home">
+      <div class="hero">
+        <div class="hero-steam"><i></i><i></i><i></i></div>
+        <p class="eyebrow">Cafetería virtual · SENATI</p>
+        <h1>Tu break,<br><span>sin colas.</span></h1>
+        <p class="hero-sub">Pide desde tu celular, paga con Yape, Plin o tarjeta y recoge tu pedido listo en la cafetería.</p>
+        <button class="btn btn-primary btn-lg" data-go="menu">Pedir ahora →</button>
+        <div class="hero-cup">☕</div>
+      </div>
+
+      <div class="steps">
+        <div class="step"><span>1</span><p>Elige</p></div>
+        <div class="step"><span>2</span><p>Agrega</p></div>
+        <div class="step"><span>3</span><p>Paga</p></div>
+        <div class="step"><span>4</span><p>Recoge</p></div>
+      </div>
+
+      <div class="section-head"><h2>🔥 Promos del día</h2></div>
+      <div class="promo-row" id="promoRow"></div>
+
+      <div class="section-head"><h2>⭐ Los más pedidos</h2><button class="link" data-go="menu">Ver todo</button></div>
+      <div class="grid" id="featuredGrid"></div>
+    </section>
+
+    <!-- MENÚ -->
+    <section class="view" id="view-menu">
+      <div class="section-head"><h2>Menú</h2></div>
+      <div class="search-wrap">
+        <input type="search" id="searchInput" placeholder="Buscar cafés, piqueos, menús..." autocomplete="off">
+      </div>
+      <div class="tabs" id="tabs"></div>
+      <div class="grid" id="menuGrid"></div>
+    </section>
+
+    <!-- MIS PEDIDOS -->
+    <section class="view" id="view-orders">
+      <div class="section-head"><h2>Mis pedidos</h2></div>
+      <div id="ordersList"></div>
+    </section>
+
+    <!-- PERSONAL -->
+    <section class="view" id="view-staff">
+      <div class="section-head"><h2>Panel de la cafetería</h2><button class="link" id="staffLogout" hidden>Salir</button></div>
+      <div id="staffLock" class="card lock">
+        <p>🔒 Acceso solo para el personal.</p>
+        <input type="password" id="staffPin" inputmode="numeric" maxlength="4" placeholder="PIN (demo: 1234)">
+        <button class="btn btn-primary" id="staffEnter">Entrar</button>
+      </div>
+      <div id="staffPanel" hidden>
+        <div class="staff-tabs">
+          <button class="chip active" data-stab="incoming">Pedidos entrantes</button>
+          <button class="chip" data-stab="stock">Productos agotados</button>
+        </div>
+        <div id="staffIncoming"></div>
+        <div id="staffStock" hidden></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <h3>BREAK <b>YA</b></h3>
+      <p>🕘 Lun a Vie · 7:30 am – 9:30 pm<br>📍 Cafetería central, 1.er piso · SENATI<br>💬 Ayuda: cafeteria@breakya.pe</p>
+      <small>Demo educativa · Los pagos son simulados.</small>
+    </footer>
+  </main>
+
+  <!-- NAVEGACIÓN INFERIOR -->
+  <nav class="bottom-nav">
+    <button data-go="home" class="active"><span>🏠</span>Inicio</button>
+    <button data-go="menu"><span>🍽️</span>Menú</button>
+    <button data-go="orders"><span>🧾</span>Pedidos<i class="dot" id="ordersDot" hidden></i></button>
+    <button data-go="staff"><span>👨‍🍳</span>Personal</button>
+  </nav>
+
+  <!-- BARRA FLOTANTE CARRITO -->
+  <button class="float-cart" id="floatCart" hidden>
+    <span id="floatCount">0</span> productos · Ver carrito <b id="floatTotal">S/ 0.00</b>
+  </button>
+
+  <!-- MODALES -->
+  <div class="overlay" id="overlay"></div>
+
+  <div class="sheet" id="productSheet" role="dialog" aria-modal="true"></div>
+  <div class="sheet" id="cartSheet" role="dialog" aria-modal="true"></div>
+  <div class="sheet" id="checkoutSheet" role="dialog" aria-modal="true"></div>
+  <div class="sheet" id="trackSheet" role="dialog" aria-modal="true"></div>
+  <div class="sheet" id="userSheet" role="dialog" aria-modal="true"></div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
